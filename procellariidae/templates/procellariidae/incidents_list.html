@@ -1,0 +1,11 @@
+<div>
+    <h1><a href="/">Django Incidents List</a></h1>
+</div>
+
+{% for incident in incidents %}
+    <div>
+        <p>published: {{ incident.published_date }}</p>
+        <h1><a href="">{{ incident.title }}</a></h1>
+        <p>{{ incident.text|linebreaksbr }}</p>
+    </div>
+{% endfor %}
