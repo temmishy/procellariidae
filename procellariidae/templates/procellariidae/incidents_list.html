@@ -1,11 +1,14 @@
-<div>
-    <h1><a href="/">Django Incidents List</a></h1>
-</div>
+{% extends 'procellariidae/base.html' %}
 
-{% for incident in incidents %}
-    <div>
-        <p>published: {{ incident.published_date }}</p>
-        <h1><a href="">{{ incident.title }}</a></h1>
-        <p>{{ incident.text|linebreaksbr }}</p>
-    </div>
-{% endfor %}
+{% block content %}
+    {% for incident in incidents %}
+        <div class="incident">
+            <div class="date">
+                <p>Published: {{ incident.published_date }}</p>
+            </div>
+            <h1><a href="{% url 'incident_detail' pk=incident.pk %}">{{ incident.title }}</a></h1>
+            <p>{{ incident.text|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
+>>>>>>> test

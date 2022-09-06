@@ -1,0 +1,13 @@
+{% extends 'procellariidae/base.html' %}
+
+{% block content %}
+    <div class="incident">
+        {% if incident.published_date %}
+            <div class="date">
+                {{ incident.published_date }}
+            </div>
+        {% endif %}
+        <h1>{{ incident.title }}</h1>
+        <p>{{ incident.text|linebreaksbr }}</p>
+    </div>
+{% endblock %}
