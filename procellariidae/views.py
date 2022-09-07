@@ -4,6 +4,9 @@ from .models import Incident
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
 
+def index(request):
+    return render (request,'procellariidae/index.html')
+
 def incidents_list(request):
     incidents = Incident.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'procellariidae/incidents_list.html', {'incidents': incidents})
