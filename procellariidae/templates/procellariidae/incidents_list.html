@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
-
 {% block content %}
+<a href="{% url 'incident_new' %}" <span class="glyphicon glyphicon-plus"></span></a>
     {% for incident in incidents %}
         <div class="incident">
             <div class="date">

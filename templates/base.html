@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="{% static 'css/styles.css' %}" >
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <a href="{% url 'incident_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
   <div class="page-header">
     <h1>Django cyber poligon</h1>
 </div>
@@ -20,7 +21,7 @@
           {% block sidebar %}
             <ul class="sidebar-nav">
               <li><a href="/">Home</a></li> 
-              <li><a href="incidents/">Incidents</a></li>  
+              <li><a href="{% url 'incidents_list'%}">Incidents</a></li>  
               {% if user.is_authenticated %}
                 <li>User: {{ user.get_username }}</li>
                 <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>   
