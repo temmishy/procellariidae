@@ -7,7 +7,9 @@
                 {{ incident.published_date }}
             </div>
         {% endif %}
-        <a class="btn btn-default" href="{% url 'incident_edit' pk=incident.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        {% if user.is_authenticated %}
+            <a class="btn btn-default" href="{% url 'incident_edit' pk=incident.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        {% endif %}
         <h1>{{ incident.title }}</h1>
         <p>{{ incident.text|linebreaksbr }}</p>
     </div>
