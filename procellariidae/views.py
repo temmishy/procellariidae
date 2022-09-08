@@ -5,7 +5,7 @@ from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
 
 def index(request):
-    return render (request,'index.html')
+    return render(request, 'index.html' )
 
 def incidents_list(request):
     incidents = Incident.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
