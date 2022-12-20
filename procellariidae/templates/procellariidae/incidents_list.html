@@ -1,14 +1,16 @@
-{% extends 'procellariidae/base.html' %}
-
+{% extends 'base.html' %}
 {% block content %}
+    {% if user.is_authenticated %}
+        <a href="{% url 'incident_new' %}" <span class="glyphicon glyphicon-plus"></span></a>
+    {% endif %}
     {% for incident in incidents %}
-        <div class="incident">
-            <div class="date">
-                <p>Published: {{ incident.published_date }}</p>
+            <div class="incident">
+                <div class="date">
+                    <p>Published: {{ incident.published_date }}</p>
+                </div>
+                <h1><a href="{% url 'incident_detail' pk=incident.pk %}">{{ incident.title }}</a></h1>
+                <p>{{ incident.text|linebreaksbr }}</p>
             </div>
-            <h1><a href="{% url 'incident_detail' pk=incident.pk %}">{{ incident.title }}</a></h1>
-            <p>{{ incident.text|linebreaksbr }}</p>
-        </div>
     {% endfor %}
 {% endblock %}
 >>>>>>> test
