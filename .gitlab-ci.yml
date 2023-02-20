@@ -15,5 +15,5 @@ build_docker_image
   script: 
     - docker build -t registry.gitlab.com/temmishy/procellariidae .
     - docker push registry.gitlab.com/temmishy/procellariidae
-    tags:
-      - shell
+  tags:
+    - shell
