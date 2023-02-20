@@ -7,5 +7,6 @@ urlpatterns = [
     path('incident/<int:pk>', views.incident_detail, name='incident_detail'),
     path('incident/new/', views.incident_new, name='incident_new'),
     path('incident/<int:pk>/edit/', views.incident_edit, name='incident_edit'),
-    path('run_command/', views.run_command, name='run_command'),
+    path('train_start/', views.train_start, name='train_start'),
+    path('train_stop/', views.train_stop, name='train_stop'),
 ]

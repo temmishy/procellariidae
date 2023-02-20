@@ -13,16 +13,25 @@ import subprocess
 def index(request):
     return render(request, 'index.html' )
 
-def run_command(request):
+def train_start(request):
     if request.method == 'POST':
         tf_dir = '/home/temmishy/gitlab/procellariidae_terraform'
         os.chdir(tf_dir)
         subprocess.Popen(['/usr/bin/terraform', 'apply', '-auto-approve', '-compact-warnings', '-input=false'])
-        #subprocess.Popen(['ls'])
-        message = 'Команда выполнена!'
-        return render(request, 'procellariidae/start.html', {'message': message})
+        message = 'Тренировка запускается'
+        return render(request, 'procellariidae/train_start.html', {'message': message})
     else:
-        return render(request, 'procellariidae/start.html')
+        return render(request, 'procellariidae/train_start.html')
+
+def train_stop(request):
+    if request.method == 'POST':
+        tf_dir = '/home/temmishy/gitlab/procellariidae_terraform'
+        os.chdir(tf_dir)
+        subprocess.Popen(['/usr/bin/terraform', 'destroy', '-auto-approve', '-compact-warnings', '-input=false'])
+        message = 'Тренировка завершается'
+        return render(request, 'procellariidae/train_stop.html', {'message': message})
+    else:
+        return render(request, 'procellariidae/train_stop.html')
 
 def incidents_list(request):
     incidents = Incident.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
