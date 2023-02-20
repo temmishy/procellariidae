@@ -9,3 +9,11 @@ testcases:
     - python manage.py test --noinput
   tags:
     - docker
+
+build_docker_image
+  stage: build
+  script: 
+    - docker build -t registry.gitlab.com/temmishy/procellariidae .
+    - docker push registry.gitlab.com/temmishy/procellariidae
+    tags:
+      - shell
