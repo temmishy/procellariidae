@@ -5,8 +5,24 @@ from django.utils import timezone
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import IncidentForm
 
+import os
+import subprocess
+
+
+
 def index(request):
     return render(request, 'index.html' )
+
+def run_command(request):
+    if request.method == 'POST':
+        tf_dir = '/home/temmishy/gitlab/procellariidae_terraform'
+        os.chdir(tf_dir)
+        subprocess.Popen(['/usr/bin/terraform', 'apply', '-auto-approve', '-compact-warnings', '-input=false'])
+        #subprocess.Popen(['ls'])
+        message = 'Команда выполнена!'
+        return render(request, 'procellariidae/start.html', {'message': message})
+    else:
+        return render(request, 'procellariidae/start.html')
 
 def incidents_list(request):
     incidents = Incident.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
