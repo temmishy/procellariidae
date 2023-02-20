@@ -1,5 +1,6 @@
 stages:
   - test
+  - build
 
 testcases:
   image: python:latest
