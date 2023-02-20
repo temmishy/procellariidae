@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Запуск тренировки</h1>
+  <form method="post" action="{% url 'train_start' %}">
+    {% csrf_token %}
+    <input type="submit" value="Начать тренировку">
+  </form>
+  {% if message %}
+    <p>{{ message }}</p>
+  {% endif %}
+{% endblock %}
