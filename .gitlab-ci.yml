@@ -12,9 +12,10 @@ django tests:
     - docker
 
 build image:
-  image: docker:latest
+  image: docker:20-dind
   services:
-    - docker:dind
+    - name: docker:20-dind
+      alias: docker
   stage: build
   script: 
     - docker build -t registry.gitlab.com/temmishy/procellariidae .
