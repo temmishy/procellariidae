@@ -20,7 +20,7 @@ build:
   script:
     - docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
     - docker build -t ${CI_REGISTRY}/temmishy/procellariidae .
-    - docker push ${CI_REGISTRY}/temmishy/procellariidae:${CI_COMMIT_TAG}
+    - docker push ${CI_REGISTRY}/temmishy/procellariidae:${CI_COMMIT_SHORT_SHA}
     - docker push ${CI_REGISTRY}/temmishy/procellariidae:latest
   tags:
     - docker
