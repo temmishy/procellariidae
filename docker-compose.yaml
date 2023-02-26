@@ -4,6 +4,6 @@ services:
   web:
     image: registry.gitlab.com/temmishy/procellariidae:latest
     volumes:
-      - ./db/:db/db.sqlite3
+      - ./db:code/db/
     ports:
       - "127.0.0.1:8000:8000"
