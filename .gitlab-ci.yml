@@ -24,7 +24,7 @@ build:
     - docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
     - docker build -t ${IMAGE_NAME}:${CI_COMMIT_SHORT_SHA} .
     - docker push ${IMAGE_NAME}:${CI_COMMIT_SHORT_SHA}
-    - docker tag ${IMAGE_NAME}:${CI_COMMIT_SHORT_SHA}
+    - docker tag ${IMAGE_NAME}:${CI_COMMIT_SHORT_SHA} ${IMAGE_NAME}:latest
     - docker push ${IMAGE_NAME}:latest
     - if [[ ! -z "${CI_COMMIT_TAG}" ]]; then docker tag ${IMAGE_NAME}:${CI_COMMIT_SHORT_SHA} ${IMAGE_NAME}:${CI_COMMIT_TAG}; fi
     - if [[ ! -z "${CI_COMMIT_TAG}" ]]; then docker push ${IMAGE_NAME}:${CI_COMMIT_TAG}; fi
@@ -34,8 +34,8 @@ build:
 deploy:
   stage: deploy
   script:
-    - cp ./docker-compose.yaml /var/www
-    - cd /var/www
+    - cp ./docker-compose.yaml /var/www/django-app
+    - cd /var/www/django-app
     - docker-compose pull
     - docker-compose stop web || true
     - docker-compose up -d --force-recreate
