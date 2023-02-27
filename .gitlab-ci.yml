@@ -21,6 +21,7 @@ build:
     - docker:dind
   stage: build
   script:
+    - sed -i 's/%%%BUILDTAG%%%\/${CI_COMMIT_SHORT_SHA}/g' ./procellariidae/templates/base.html
     - docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
     - docker build -t ${IMAGE_NAME}:${CI_COMMIT_SHORT_SHA} .
     - docker push ${IMAGE_NAME}:${CI_COMMIT_SHORT_SHA}
