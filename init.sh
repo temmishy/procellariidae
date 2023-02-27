@@ -6,7 +6,7 @@ user=teacher
 email=admin@example.com
 password=12345
 
-array_users=("analyst1", "analyst2", "response1", "response2")
+array_users=("analyst1" "analyst2" "response1" "response2")
 
 file=db/db.sqlite3
 
