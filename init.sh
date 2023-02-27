@@ -2,9 +2,9 @@
 
 python3 manage.py migrate
 # User credentials
-user=admin
+user=teacher
 email=admin@example.com
-password=pass
+password=teacher
 
 file=db/db.sqlite3
 
