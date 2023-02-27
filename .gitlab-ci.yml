@@ -36,6 +36,7 @@ deploy:
   script:
     - cp ./docker-compose.yaml /var/www/django-app
     - cd /var/www/django-app
+    - docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
     - docker-compose pull
     - docker-compose stop web || true
     - docker-compose up -d --force-recreate
