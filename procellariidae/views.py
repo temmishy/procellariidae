@@ -15,9 +15,10 @@ def index(request):
 
 def train_start(request):
     if request.method == 'POST':
-        tf_dir = '/home/temmishy/gitlab/procellariidae_terraform'
+        tf_dir = '/var/www/django-app/terraform'
         os.chdir(tf_dir)
         subprocess.Popen(['/usr/bin/terraform', 'apply', '-auto-approve', '-compact-warnings', '-input=false'])
+
         message = 'Тренировка запускается'
         return render(request, 'procellariidae/train_start.html', {'message': message})
     else:
@@ -25,9 +26,10 @@ def train_start(request):
 
 def train_stop(request):
     if request.method == 'POST':
-        tf_dir = '/home/temmishy/gitlab/procellariidae_terraform'
+        tf_dir = '/var/www/django-app/terraform'
         os.chdir(tf_dir)
         subprocess.Popen(['/usr/bin/terraform', 'destroy', '-auto-approve', '-compact-warnings', '-input=false'])
+        
         message = 'Тренировка завершается'
         return render(request, 'procellariidae/train_stop.html', {'message': message})
     else:

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
     {% if user.is_authenticated %}
+    {% if user.get_username != 'response1' %}
         <a href="{% url 'incident_new' %}" <span class="glyphicon glyphicon-plus"></span></a>
     {% endif %}
     {% for incident in incidents %}
@@ -12,4 +13,5 @@
                 <p>{{ incident.text|linebreaksbr }}</p>
             </div>
     {% endfor %}
+    {% endif %}
 {% endblock %}
